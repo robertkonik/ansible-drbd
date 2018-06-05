@@ -79,13 +79,3 @@
     state: directory
   become: true
   with_items: "{{ drbd_disks }}"
-
-- name: config | Updating /etc/fstab Mounts
-  mount:
-    path: "{{ item['mountpoint'] }}"
-    src: "{{ item['device'] }}"
-    fstype: "{{ item['filesystem'] }}"
-    opts: "noauto,rw,noatime"
-    state: present
-  become: true
-  with_items: "{{ drbd_disks }}"
