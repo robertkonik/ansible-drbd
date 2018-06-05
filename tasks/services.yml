@@ -9,5 +9,5 @@
   service:
     name: heartbeat
     enabled: true
-  become: true
+  become: yes
   when: drbd_use_heartbeat
