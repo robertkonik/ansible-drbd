@@ -29,7 +29,7 @@ resource {{ disk['resource'] }} {
     address {{ hostvars[host]['ansible_' + drbd_interface]['ipv4']['address'] }}:{{ resource_port }};
     meta-disk internal;
   }
+{% set resource_port = resource_port + 1 %}
 {%   endfor %}
 }
-{% set resource_port = resource_port + 1 %}
 {% endfor %}
