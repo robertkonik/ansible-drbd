@@ -1,5 +1,6 @@
 # {{ ansible_managed }}
 
+{{ hostvars[groups[drbd_group][0]]['inventory_hostname_short'] }}.{{ inventory_fqdn }} IPaddr2::{{ drbd_vip }}/{{drbd_vip_netmask}}/{{ drbd_interface }}:0
 {% for item in drbd_disks %}
-{{ hostvars[groups[drbd_group][0]]['inventory_hostname_short'] }}.{{ inventory_fqdn }} IPaddr2::{{ drbd_vip }}/{{drbd_vip_netmask}}/{{ drbd_interface }}:0 drbddisk::{{ item['resource'] }} Filesystem::{{ item['device'] }}::{{ item['mountpoint'] }}::{{ item['filesystem'] }}::noatime 
+{{ hostvars[groups[drbd_group][0]]['inventory_hostname_short'] }}.{{ inventory_fqdn }} drbddisk::{{ item['resource'] }} Filesystem::{{ item['device'] }}::{{ item['mountpoint'] }}::{{ item['filesystem'] }}::noatime 
 {% endfor %}
