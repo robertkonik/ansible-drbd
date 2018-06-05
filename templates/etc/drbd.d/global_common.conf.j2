@@ -20,16 +20,14 @@ common {
 }
 
 {% for disk in drbd_disks %}
-{% set resource_port = 7788 %}
 resource {{ disk['resource'] }} {
 {%   for host in groups[drbd_group] %}
   on {{ hostvars[host]['inventory_hostname_short'] }} {
     device {{ disk['device'] }};
     disk {{ disk['use_partition'] }};
-    address {{ hostvars[host]['ansible_' + drbd_interface]['ipv4']['address'] }}:{{ resource_port }};
+    address {{ hostvars[host]['ansible_' + drbd_interface]['ipv4']['address'] }}:{{ disk['resource_port'] }};
     meta-disk internal;
   }
-{% set resource_port = resource_port + 1 %}
 {%   endfor %}
 }
 {% endfor %}
