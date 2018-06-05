@@ -18,6 +18,7 @@ drbd_interface: enp0s8
 drbd_network_shared_secret: wXE8MqVa
 
 drbd_vip: 192.168.250.100
+drbd_vip_netmask: 24
 
 # Debian9/Ubuntu have included drbd support.
 drbd_deb_packages: ['drbd8-utils']
